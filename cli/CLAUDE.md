@@ -1,5 +1,43 @@
 # HAPI CLI Codebase Overview
 
+## Personal Fork Notes
+
+This is the **personal fork** (`personal/improvements` branch) of HAPI, designed to coexist with the original HAPI installation.
+
+### Key Differences from Original HAPI
+
+| Configuration | Original HAPI | Personal Fork (hapip) |
+|--------------|---------------|----------------------|
+| CLI Command | `hapi` | `hapip` |
+| Data Directory | `~/.hapi` | `~/.hapi-personal` |
+| Default Port | 3006 | 3007 |
+| Package Name | `@twsxtd/hapi` | `@twsxtd/hapi` (bin: hapip) |
+
+### Git Worktree + Bun Installation
+
+**IMPORTANT**: When using this project in a git worktree environment, you **must** use:
+
+```bash
+bun install --frozen-lockfile
+```
+
+**Do NOT use** plain `bun install`, as it creates symlinked `node_modules` in subpackages (server/, cli/, web/) which causes `EISDIR` errors when running.
+
+### Development
+
+```bash
+# Start server (port 3007)
+bun run dev:server
+
+# Start web (Vite, typically port 5173)
+bun run dev:web
+
+# Run CLI
+cd cli && bun src/index.ts --version
+```
+
+---
+
 ## Project Overview
 
 HAPI CLI (`hapi`) is a command-line tool that wraps Claude Code to enable remote control and session sharing via `hapi-server` (Telegram Bot + Mini App). It's part of a two-component system:
