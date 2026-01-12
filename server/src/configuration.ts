@@ -120,7 +120,7 @@ class Configuration {
         // 1. Determine data directory (env only - not persisted)
         const dataDir = process.env.HAPI_HOME
             ? process.env.HAPI_HOME.replace(/^~/, homedir())
-            : join(homedir(), '.hapi')
+            : join(homedir(), '.hapi-personal')
 
         // Ensure data directory exists before loading settings
         if (!existsSync(dataDir)) {

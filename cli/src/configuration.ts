@@ -29,7 +29,7 @@ class Configuration {
 
     constructor() {
         // Server configuration
-        this._serverUrl = process.env.HAPI_SERVER_URL || 'http://localhost:3006'
+        this._serverUrl = process.env.HAPI_SERVER_URL || 'http://localhost:3007'
         this._cliApiToken = process.env.CLI_API_TOKEN || ''
 
         // Check if we're running as daemon based on process args
@@ -42,7 +42,7 @@ class Configuration {
             const expandedPath = process.env.HAPI_HOME.replace(/^~/, homedir())
             this.happyHomeDir = expandedPath
         } else {
-            this.happyHomeDir = join(homedir(), '.hapi')
+            this.happyHomeDir = join(homedir(), '.hapi-personal')
         }
 
         this.logsDir = join(this.happyHomeDir, 'logs')
