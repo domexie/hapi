@@ -23,7 +23,13 @@ export async function startHappyServer(client: ApiSessionClient) {
                 summary: title,
                 leafUuid: randomUUID()
             });
-            
+
+            // Also update the session metadata name so it persists
+            client.updateMetadata((metadata) => ({
+                ...metadata,
+                name: title
+            }));
+
             return { success: true };
         } catch (error) {
             return { success: false, error: String(error) };
